@@ -32,28 +32,28 @@ import com.google.gson.reflect.TypeToken;
  */
 public class NormalDialogEvent extends JSEvent {
 
-    private NormalDialogData normalDialogData;
+    private Request request;
 
     public NormalDialogEvent(String module, String function) {
         super(module, function);
     }
 
 
-    public NormalDialogData getNormalDialogData() {
-        return normalDialogData;
+    public Request getRequest() {
+        return request;
     }
 
 
     @Override
     public void processData(String data) {
         log(data);
-        normalDialogData = JsonTool.fromJsonString(data, new TypeToken<NormalDialogData>() {}.getType());
-        if (normalDialogData == null || !normalDialogData.check()) {
-            LogTool.error(String.format("normalDialog 's params of the module are not support", getModule()));
+        request = JsonTool.fromJsonString(data, new TypeToken<Request>() {}.getType());
+        if (request == null || !request.check()) {
+            LogTool.error(String.format("normalDialog 's params of the module named %s are not support", getModule()));
         }
     }
 
-    public static class NormalDialogData {
+    public static class Request {
         @SerializedName("title")
         private String title;
         @SerializedName("content")
@@ -106,7 +106,7 @@ public class NormalDialogEvent extends JSEvent {
         }
     }
 
-    public static class NormalDialogResult {
+    public static class Response {
         @SerializedName("result")
         private int result;
         @SerializedName("message")

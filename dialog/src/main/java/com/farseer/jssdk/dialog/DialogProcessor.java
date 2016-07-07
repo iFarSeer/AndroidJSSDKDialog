@@ -46,7 +46,7 @@ public class DialogProcessor extends JSProcessor {
 
     @Subscribe
     public void processNormalDialogEvent(final NormalDialogEvent event) {
-        NormalDialogEvent.NormalDialogData data = event.getNormalDialogData();
+        NormalDialogEvent.Request data = event.getRequest();
         hideDialog();
         materialDialog = new MaterialDialog.Builder(getContext())
                 .title(data.getTitle())
@@ -57,7 +57,7 @@ public class DialogProcessor extends JSProcessor {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         LogTool.debug("onPositive");
-                        NormalDialogEvent.NormalDialogResult result = new NormalDialogEvent.NormalDialogResult();
+                        NormalDialogEvent.Response result = new NormalDialogEvent.Response();
                         result.setMessage("sure");
                         result.setResult(1);
                         getJsInvoker().onJsInvoke(event.getCallback(JsonTool.toJsonString(result)));
@@ -67,7 +67,7 @@ public class DialogProcessor extends JSProcessor {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
                         LogTool.debug("onNegative");
-                        NormalDialogEvent.NormalDialogResult result = new NormalDialogEvent.NormalDialogResult();
+                        NormalDialogEvent.Response result = new NormalDialogEvent.Response();
                         result.setMessage("cancel");
                         result.setResult(0);
                         getJsInvoker().onJsInvoke(event.getCallback(JsonTool.toJsonString(result)));
