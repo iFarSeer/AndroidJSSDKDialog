@@ -50,5 +50,5 @@ dependencies {
         transitive = true
     }
 
-    compile 'com.farseer.jssdk:core:0.0.9-SNAPSHOT'
+    compile 'com.farseer.jssdk:core:0.0.10-SNAPSHOT'
 }
