@@ -31,7 +31,7 @@ import com.farseer.jssdk.internal.Dispatcher;
  * @since 16/6/19
  */
 
-@Module(name = "Dialog", namespace = "cn.com.itomix")
+@Module(name = "Dialog", namespace = "com.farseer")
 public class DialogJsModule extends JSModule {
 
     public DialogJsModule(Context context, Dispatcher dispatcher, String moduleName, String namespace) {
