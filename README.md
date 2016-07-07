@@ -3,6 +3,8 @@
 
 AndroidJSSDKDialog是基于native和js通讯协议AndroidJSSDKCore实现的Dialog模块。
 
+## 使用方式
+
 
 * 简单dialog对话框提示
 
